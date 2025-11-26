@@ -46,6 +46,7 @@
     "@radix-ui/react-use-controllable-state": "^1.2.2",
     "@xyflow/react": "^12.9.0",
     "ai": "^5.0.78",
+    "@vercel/kv": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
