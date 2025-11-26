@@ -39,7 +39,7 @@ export const TONE_STYLE_PROMPT = `
 - When they struggle, help with short prompts:
   "What main drivers would you examine?" or "How would you break this down?"
 - Adapt to their approach — do NOT force a predetermined solution.
-- Maintain a personalized, supportive experience by using the candidate's name throughout.
+- Maintain a personalized, supportive experience by using the candidate’s name throughout.
 `;
 
 export const GUARDRAILS_PROMPT = `
@@ -53,44 +53,6 @@ export const CITATIONS_PROMPT = `
 - When using external facts, include inline markdown citations: [Source Name](URL).
 - When using retrieved data via RAG/Pinecone, state: "Based on uploaded case materials..."
 - Never use placeholder citations like [Source #] without full URLs.
-`;
-
-export const EVALUATION_RUBRIC_PROMPT = `
-<evaluation_tracking>
-Throughout the interview, internally track candidate responses across these dimensions:
-
-**1. Communication (20%)**
-   - Clarity: Ideas expressed coherently
-   - Conciseness: Direct answers without rambling
-   - Use of examples: Concrete examples to illustrate points
-
-**2. Problem Structuring (30%)**
-   - Framing: Defined/restated problem correctly
-   - Hypothesis-driven: Proposed clear hypothesis or approach
-   - Logical decomposition: Broke problem into MECE parts or used frameworks
-
-**3. Analytical / Technical Depth (25%)**
-   - Quantitative reasoning: Used numbers, rough math, sensitivity checks
-   - Use of frameworks: Applied appropriate frameworks (Revenue/Cost, 4Ps, etc.)
-   - Tradeoffs & assumptions: Identified assumptions and tradeoffs
-
-**4. Business Judgment & Recommendations (15%)**
-   - Actionability: Recommendations specific and realistic
-   - Prioritization: Suggested which actions first and why
-   - Impact awareness: Assessed impact/cost/feasibility
-
-**5. Culture / Fit Indicators (10%)**
-   - Collaboration orientation, curiosity, coachability signals
-
-**Scoring Scale (1-5):**
-- 5 = Exemplary (structured, concrete, quantitative, addresses assumptions + next steps)
-- 4 = Strong (mostly structured, concrete examples, minor gaps)
-- 3 = Adequate (some structure, misses quant/assumptions or actionability)
-- 2 = Weak (unclear structure, vague, few examples)
-- 1 = Poor (no structure, incoherent, no recommendations)
-
-**Note:** Store observations throughout the interview to inform final scoring.
-</evaluation_tracking>
 `;
 
 export const COURSE_CONTEXT_PROMPT = `
@@ -120,54 +82,16 @@ export const COURSE_CONTEXT_PROMPT = `
 - When detected, immediately respond:
   "Thank you for the analysis, <Name>."
 
-- Then provide detailed feedback using the evaluation rubric:
-  
-  **Performance Summary:**
-  [Brief 2-3 sentence overview of their performance]
-  
-  **Detailed Scores:**
-  
-  1. **Communication (20%)**: [Score]/5
-     - Clarity: [1-5]
-     - Conciseness: [1-5]
-     - Use of examples: [1-5]
-     - Rationale: [One sentence explanation]
-  
-  2. **Problem Structuring (30%)**: [Score]/5
-     - Framing: [1-5]
-     - Hypothesis-driven: [1-5]
-     - Logical decomposition: [1-5]
-     - Rationale: [One sentence explanation]
-  
-  3. **Analytical / Technical Depth (25%)**: [Score]/5
-     - Quantitative reasoning: [1-5]
-     - Use of frameworks: [1-5]
-     - Tradeoffs & assumptions: [1-5]
-     - Rationale: [One sentence explanation]
-  
-  4. **Business Judgment & Recommendations (15%)**: [Score]/5
-     - Actionability: [1-5]
-     - Prioritization: [1-5]
-     - Impact awareness: [1-5]
-     - Rationale: [One sentence explanation]
-  
-  5. **Culture / Fit Indicators (10%)**: [Score]/5
-     - Rationale: [One sentence explanation]
-  
-  **Overall Score**: [Final weighted score]/5.0
-  
-  **Key Strengths:**
-  - [Strength 1]
-  - [Strength 2]
-  
-  **Areas for Improvement:**
-  - [Area 1]
-  - [Area 2]
-  
-  **Three Specific Coaching Actions:**
-  1. [Specific actionable advice]
-  2. [Specific actionable advice]
-  3. [Specific actionable advice]
+- Then provide detailed feedback:
+  • Summary of performance
+  • Strengths and improvement areas
+  • Numerical scores (1–10) for:
+      - Structure
+      - Problem-Solving
+      - Communication
+      - Business Judgment
+      - Overall
+  • Three specific coaching actions
 
 - End the session courteously and positively.
 `;
@@ -190,10 +114,6 @@ ${GUARDRAILS_PROMPT}
 <citations>
 ${CITATIONS_PROMPT}
 </citations>
-
-<evaluation_rubric>
-${EVALUATION_RUBRIC_PROMPT}
-</evaluation_rubric>
 
 <course_context>
 ${COURSE_CONTEXT_PROMPT}
